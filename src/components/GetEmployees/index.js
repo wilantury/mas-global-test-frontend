@@ -8,6 +8,7 @@ export const GetEmployees = () => {
     const [employees, setEmployees] = useState({})
     const [isQuerySubmitted, setIsQuerySubmitted] = useState(false)
     const {employeeData, setEmployeeData} = useContext(EmployeeContext)
+    const [firstRender, setFirstRender] = useState(true)
 
     function onChangeEvent(e){
         setQueryId(e.target.value)
@@ -17,7 +18,7 @@ export const GetEmployees = () => {
         setIsQuerySubmitted(!isQuerySubmitted)
     }
 
-    useEffect(function() {
+    function getApiData(queryId){
         fetch(`${API}?id=${queryId}`)
         .then(res => res.json())
         .then(response => {
@@ -25,6 +26,12 @@ export const GetEmployees = () => {
             setEmployeeData(response.Employees)
             console.log(response)
         })
+    }
+
+    useEffect(function() {
+        firstRender ?
+            setFirstRender(false) :
+            getApiData(queryId) 
     }, [isQuerySubmitted])
 
     return (
