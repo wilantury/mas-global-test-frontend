@@ -1,5 +1,6 @@
 import React, { useEffect ,useState, useContext } from 'react'
 import EmployeeContext from '../../context/EmployeeContext'
+import { Container, Button, Input } from './styles'
 
 const API = "http://127.0.0.1:3000/api"
 
@@ -35,16 +36,17 @@ export const GetEmployees = () => {
     }, [isQuerySubmitted])
 
     return (
-        <div>
-                <input
+        <Container>
+            <h1>Employee Data Base</h1>
+                <Input
                     type="number"
                     onChange={onChangeEvent}
                     placeholder="Employee ID"/>
-                <button
+                <Button
                     type="submit"
                     onClick={handleSubmit}
                     >Get Employees
-                </button>
-        </div>
+                </Button>
+        </Container>
     )
 }

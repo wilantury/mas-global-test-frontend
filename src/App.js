@@ -8,7 +8,6 @@ export const  App = () => {
     const value = { employeeData, setEmployeeData}
     return (
         <EmployeeContext.Provider value = {value}>
-            <h1>Hola mundo react avanzado v3</h1>
             <GetEmployees />
             <Employees />
         </EmployeeContext.Provider>
