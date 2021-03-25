@@ -25,7 +25,6 @@ export const GetEmployees = () => {
         .then(response => {
             setEmployees(response)
             setEmployeeData(response.Employees)
-            console.log(response)
         })
     }
 
